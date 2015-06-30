@@ -12,7 +12,7 @@ require_once 'inc/config.php';
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop</title>
+    <title>Shop - <?= '{'.user_id().'}' ?></title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-slider.css" rel="stylesheet">
@@ -31,8 +31,8 @@ require_once 'inc/config.php';
 </head>
 
 <body>
-
     <?php include_once 'navbar.php' ?>
 
     <!-- Page Content -->
     <div class="container">
+

@@ -1,5 +1,6 @@
 <?php
 include_once 'header.php';
+require_once 'inc/func.php';
 
 if (empty($_GET['id'])) {
     header('Location: index.php');
@@ -7,6 +8,11 @@ if (empty($_GET['id'])) {
 }
 
 $id = intval($_GET['id']);
+
+if (isset($_GET['BUY'])) {
+    $_SESSION['cart'][$id] += 1;
+}
+debug( $_SESSION['cart'] );
 
 $query = $db->prepare('SELECT * FROM products WHERE id = :id');
 $query->bindValue('id', $id, PDO::PARAM_INT);
@@ -33,7 +39,7 @@ $full_product = $query->fetch();
                             <?= getProductRating($full_product['rating']) ?>
                         </div>
                         <div class="btns text-center clearfix">
-                            <a class="btn btn-success" href=""><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
+                            <a class="btn btn-success" href="product.php?id=<?= $id  ?>&BUY"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
                         </div>
                     </div><!-- /.thumbnail -->
                 </div><!-- /.product-full -->
