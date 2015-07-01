@@ -9,11 +9,6 @@ if (empty($_GET['id'])) {
 
 $id = intval($_GET['id']);
 
-if (isset($_GET['BUY'])) {
-    $_SESSION['cart'][$id] += 1;
-}
-debug( $_SESSION['cart'] );
-
 $query = $db->prepare('SELECT * FROM products WHERE id = :id');
 $query->bindValue('id', $id, PDO::PARAM_INT);
 $query->execute();

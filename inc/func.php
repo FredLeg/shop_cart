@@ -16,7 +16,7 @@ function getRandomDate() {
 	$rand_date = $rand_year.'-'.$rand_month.'-'.$rand_day.' '.$rand_hour.':'.$rand_minute.':'.$rand_second;
 
 	return $rand_date;
-}
+	}
 
 /*
 	Fonction qui coupe une chaine en preservant les mots
@@ -39,7 +39,7 @@ function cutString($text, $max_length = 0, $end = '...', $sep = '[@]') {
 
 	// On retourne la chaine de départ telle quelle
 	return $text;
-}
+	}
 
 /*
 Product Functions
@@ -56,7 +56,7 @@ function getProductPicture($picture = '') {
 		}
 	}
 	return $img;
-}
+	}
 
 function getProductRating($rating = 0.0, $count_reviews = 0) {
 
@@ -82,7 +82,7 @@ function getProductRating($rating = 0.0, $count_reviews = 0) {
 	$html .= '</p>';
 
 	return $html;
-}
+	}
 
 function displayProduct($product, $class = 'product') {
 
@@ -91,7 +91,7 @@ function displayProduct($product, $class = 'product') {
 	}
 
 	include 'product-block.php';
-}
+	}
 
 function getSliderPictures($max_count = 0) {
 
@@ -102,8 +102,7 @@ function getSliderPictures($max_count = 0) {
 	}
 
 	include 'slider.php';
-}
-
+	}
 
 function redirect_js ( $url, $delay = 1 ) {
 	return ' <script>
@@ -118,4 +117,4 @@ function debug($array) {
 	print_r($array);
 	echo '</pre>';
 	//echo '<pre>'.print_r($array, true).'</pre>';
-}
+	}

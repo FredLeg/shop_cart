@@ -12,6 +12,7 @@ $pages = array(
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
+
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Menu</span>
@@ -23,16 +24,34 @@ $pages = array(
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
 				<ul class="nav navbar-nav">
 					<?php
 					foreach($pages as $page_url => $page_name) {
 
 					$active = '';
 					if ($current_page == $page_url) {
-						$active = ' class="active"';
+						$active = ' active';
 					}
+					if ($page_name=='Register') {
 					?>
-					<li<?= $active ?>><a href="<?= $page_url ?>"><?= $page_name ?></a></li>
+					<li class="dropdown<?= $active ?>"><a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="<?= $page_url ?>"><?= $page_name ?><span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			          	<?php
+			          		if ( !user_is_logged() ) { $connect_menu = "Connexion";   $connect_url = "login.php";  }
+			          		else                     { $connect_menu = "Déconnexion"; $connect_url = "logout.php"; }
+			          	?>
+			            <li><a href="<?= $connect_url ?>"><?= $connect_menu ?></a></li>
+			            <li><a href="register.php">Inscription</a></li>
+			          	<?php if ( user_is_logged() ): ?>
+							<li role="separator" class="divider"></li>
+			          		<li><a href="profile.php">Profile</a></li>
+			          	<?php endif; ?>
+			          </ul>
+					</li>
+					<?php } else { ?>
+					<li class="<?= $active ?>"><a href="<?= $page_url ?>"><?= $page_name ?></a></li>
+					<?php } ?>
 					<?php } ?>
 				</ul>
 
@@ -53,6 +72,8 @@ $pages = array(
 						</span>
 					</div>
 				</form>
+
 			</div><!-- /.navbar-collapse -->
+
 		</div><!-- /.container -->
 	</nav>

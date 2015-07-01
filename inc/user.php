@@ -33,8 +33,7 @@
 		<?php
 		}
 	function user_id ( $user_id = false ) {
-		if (!$user_id) $_SESSION['user_id'] = $user_id;
-		else unset( $_SESSION['user_id'] );
+		if ($user_id) $_SESSION['user_id'] = $user_id;
 		return $_SESSION['user_id'];
 		}
 	function user_is_logged () {
@@ -50,7 +49,9 @@
 			return false;
 		} else {
 			if ( password_verify( $user_password, $result['pass'] )) {
-			    return $result['id'];
+				$id = $result['id'];
+				user_id ( $id );
+			    return $id;
 			} else {
 				return false;
 			}
