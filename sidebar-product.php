@@ -1,7 +1,7 @@
 <?php
 
-$query = $db->prepare('SELECT * FROM products WHERE category = :category ORDER BY RAND() LIMIT 3');
-$query->bindValue('category', $full_product['category'], PDO::PARAM_INT);
+$query = $db->prepare('SELECT * FROM products WHERE category_id = :category_id ORDER BY RAND() LIMIT 3');
+$query->bindValue('category_id', $full_product['category_id'], PDO::PARAM_INT);
 $query->execute();
 $related_products = $query->fetchAll();
 ?>
